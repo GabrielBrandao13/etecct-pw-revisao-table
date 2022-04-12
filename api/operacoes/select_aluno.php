@@ -1,11 +1,14 @@
-<?php 
-    require "../conexao.php";
-    $conn = create_connection();
-    $sql = "SELECT * FROM tbaluno";
-    // $sql = $conn->prepare($sql);
+<?php
+    function get_all_alunos(){
+        $conn = create_connection();
+        $sql = "SELECT * FROM tbaluno";
 
-    $rs = $conn->query($sql);
-    while($row = $rs->fetch(PDO::FETCH_OBJ)){
-        echo $row->nome;
+        $resultados = [];
+    
+        $rs = $conn->query($sql);
+        while($row = $rs->fetch(PDO::FETCH_OBJ)){
+            array_push($resultados, $row->nome);
+        }
+        return $resultados;
     }
 ?>
