@@ -50,14 +50,17 @@ class Controller {
     }
 
     public function editarAluno($id, $nome, $nota1, $nota2, $nota3){
-        $sql = "UPDATE tbaluno SET nome= :nome, nota1= :nota1, nota2= :nota2, nota3= :nota3 WHERE id= :id";
+        $sql = "UPDATE tbaluno SET nome= :nome, nota1= :nota1, nota2= :nota2, nota3= :nota3, media= :media WHERE id= :id";
         $sql = $this->conn->prepare($sql);
+
+        $media = ($nota1+$nota2+$nota3)/3;
 
         $sql->bindParam(":nome", $nome);
         $sql->bindParam(":id", $id);
         $sql->bindParam(":nota1", $nota1);
         $sql->bindParam(":nota2", $nota2);
         $sql->bindParam(":nota3", $nota3);
+        $sql->bindParam(":media", $media);
 
         $sql->execute();
     }
