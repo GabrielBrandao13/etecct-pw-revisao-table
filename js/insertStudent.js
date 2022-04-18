@@ -36,7 +36,7 @@ function handleAddAluno(e){
 }
 
 
-function adicionarAluno(nome, nota1, nota2, nota3){
+function insertStudent(nome, nota1, nota2, nota3){
     const TARGET = document.querySelector('table tbody')
     const row = document.createElement('tr')
 
@@ -53,7 +53,7 @@ function adicionarAluno(nome, nota1, nota2, nota3){
     row.appendChild(td5)
 
     TARGET.appendChild(row)
-    setMediaAlunos()
+    setAvgOfStudents()
 }
 
 async function insertStudentOnDb(nome, nota1, nota2, nota3){

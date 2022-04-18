@@ -1,25 +1,25 @@
 const MINGRADE = 2.5
 
 function iterateOverCell(aluno){
-    let notasAluno = [...aluno.children].slice(1, 4).map(node => {
+    let studentsGrades = [...aluno.children].slice(1, 4).map(node => {
         const nodeValue = Number(node.textContent)
         if(nodeValue < MINGRADE){
             markCellAsReproved(node)
         }
         return nodeValue
-    }).map(nota =>{
-        const result = Number(nota)
+    }).map(grade =>{
+        const result = Number(grade)
         return result
     })
-    let media = avgOf(notasAluno)
-    return media
+    let avgOfStudentsGrades = avgOf(studentsGrades)
+    return avgOfStudentsGrades
 }
 
-function setMediaAlunos(){
-    let alunos = [...document.querySelectorAll('tr')]
-    alunos.slice(1).map(aluno => {
-        let media = iterateOverCell(aluno)
-        let mediaContainer = aluno.children[4]
+function setAvgOfStudents(){
+    let students = [...document.querySelectorAll('tr')]
+    students.slice(1).map(student => {
+        let media = iterateOverCell(student)
+        let mediaContainer = student.children[4]
         mediaContainer.textContent = media
         markStudentsAsReproved(media, mediaContainer)
     })
