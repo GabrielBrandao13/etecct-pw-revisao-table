@@ -1,7 +1,8 @@
-async function loadStudentsInfo(info){
+async function loadStudentsInfo(){
+    const students = await getAlunos()
     clearTable()
 
-    info.map(student => {
+    students.map(student => {
         adicionarAluno(student.nome, student.nota1, student.nota2, student.nota3)
     })
 }

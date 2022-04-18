@@ -1,10 +1,8 @@
 async function update(){
-    
+    await loadStudentsInfo()
 }
 
 async function main(){
-    const info = await getAlunos()
-    await loadStudentsInfo(info)
     await update()
 }
 
