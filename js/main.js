@@ -1,7 +1,11 @@
+async function update(){
+    
+}
+
 async function main(){
-    setMediaAlunos()
-    const alunos = await getAlunos()
-    loadStudentsInfo(alunos)
+    const info = await getAlunos()
+    await loadStudentsInfo(info)
+    await update()
 }
 
 main()

@@ -26,7 +26,7 @@ function handleAddAluno(e){
     const nota2 = inputNota2.value
     const nota3 = inputNota3.value
 
-    adicionarAluno(nome, nota1, nota2, nota3)
+    insertStudentOnDb(nome, nota1, nota2, nota3)
 
 
     inputNome.value = ''
@@ -54,4 +54,20 @@ function adicionarAluno(nome, nota1, nota2, nota3){
 
     TARGET.appendChild(row)
     setMediaAlunos()
+}
+
+async function insertStudentOnDb(nome, nota1, nota2, nota3){
+    const data = new FormData()
+
+    data.append('nome', nome)
+    data.append('nota1', nota1)
+    data.append('nota2', nota2)
+    data.append('nota3', nota3)
+
+    await fetch('./api/insert_aluno.php', {
+        body: data,
+        method: 'POST',
+        "Content-Type": "multipart/form-data"
+    })
+    update()
 }
