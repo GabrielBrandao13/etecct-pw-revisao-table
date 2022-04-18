@@ -9,6 +9,10 @@ function createCell(val){
     return cell
 }
 
+function clearTable(){
+    document.querySelector('table tbody').innerHTML = ''
+}
+
 
 function handleAddAluno(e){
     e.preventDefault()
@@ -33,7 +37,7 @@ function handleAddAluno(e){
 
 
 function adicionarAluno(nome, nota1, nota2, nota3){
-    const TARGET = document.querySelector('table')
+    const TARGET = document.querySelector('table tbody')
     const row = document.createElement('tr')
 
     const td1 = createCell(nome)

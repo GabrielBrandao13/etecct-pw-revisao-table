@@ -1,6 +1,7 @@
 async function main(){
     setMediaAlunos()
-    await getAlunos()
+    const alunos = await getAlunos()
+    loadStudentsInfo(alunos)
 }
 
 main()
