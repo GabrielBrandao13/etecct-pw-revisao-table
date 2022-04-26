@@ -1,11 +1,11 @@
 <?php
 
 class Aluno {
-    public string $nome;
-    public int $nota1;
-    public int $nota2;
-    public int $nota3;
-    public float $media;
+    public $nome;
+    public $nota1;
+    public $nota2;
+    public $nota3;
+    public $media;
 
     public function __construct(string $nome, int $nota1, int $nota2, int $nota3){
         $this->nome = $nome;
