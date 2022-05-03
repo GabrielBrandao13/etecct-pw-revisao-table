@@ -18,5 +18,3 @@ jobs:
         username: 3451205_a
         password: ${{ secrets.ftp_password }}
         server-dir: etec-199-kevinpeters.atwebpages.com/pw-revisao/
-        exclude: 
-          - sql/
