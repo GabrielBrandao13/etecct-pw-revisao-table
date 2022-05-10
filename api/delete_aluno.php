@@ -5,5 +5,4 @@
     $id = $_POST['id'];
 
     $controller->removerAluno($id);
-    echo $id;
 ?>
