@@ -2,7 +2,6 @@ const form = document.querySelector('form')
 
 form.addEventListener('submit', handleAddAluno)
 
-
 function createCell(val){
     const cell = document.createElement('td')
     cell.textContent = val
@@ -28,7 +27,6 @@ function handleAddAluno(e){
 
     insertStudentOnDb(nome, nota1, nota2, nota3)
 
-
     inputNome.value = ''
     inputNota1.value = ''
     inputNota2.value = ''
@@ -45,12 +43,14 @@ function insertStudent(nome, nota1, nota2, nota3){
     const td3 = createCell(nota2)
     const td4 = createCell(nota3)
     const td5 = createCell(0)
+    const tdDelete = createCell('❌')
     
     row.appendChild(td1)
     row.appendChild(td2)
     row.appendChild(td3)
     row.appendChild(td4)
     row.appendChild(td5)
+    row.appendChild(tdDelete)
 
     TARGET.appendChild(row)
     setAvgOfStudents()
