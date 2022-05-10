@@ -56,18 +56,40 @@ function insertStudent(nome, nota1, nota2, nota3){
     setAvgOfStudents()
 }
 
+
+
+function handleRemoveStudentFactory(id){
+    const fn = (e)=> {
+        removeStudentFromDb(id)
+    }
+    return fn
+}
+
+
 async function insertStudentOnDb(nome, nota1, nota2, nota3){
     const data = new FormData()
-
+    
     data.append('nome', nome)
     data.append('nota1', nota1)
     data.append('nota2', nota2)
     data.append('nota3', nota3)
-
+    
     await fetch('./api/insert_aluno.php', {
         body: data,
         method: 'POST',
         "Content-Type": "multipart/form-data"
+    })
+    update()
+}
+async function removeStudentFromDb(id){
+    const data = new FormData()
+
+    data.append('id', id)
+
+    await fetch('./api/delete_aluno.php', {
+        body:data,
+        method:'POST',
+        'Content-type':"multipart/form-data"
     })
     update()
 }

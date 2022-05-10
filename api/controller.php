@@ -16,6 +16,7 @@ class Controller {
         $rs = $this->conn->query($sql);
         while($row = $rs->fetch(PDO::FETCH_OBJ)){
             $aluno = new Aluno(
+                $row->id,
                 $row->nome,
                 $row->nota1,
                 $row->nota2,
@@ -39,8 +40,6 @@ class Controller {
         $sql->execute();
     }
     public function removerAluno($id){
-        // $conn = create_connection();
-        
         $sql = "DELETE FROM tbaluno WHERE id = :id";
         $sql = $this->conn->prepare($sql);
 
