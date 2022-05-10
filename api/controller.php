@@ -40,8 +40,9 @@ class Controller {
         $sql->execute();
     }
     public function removerAluno($id){
+        $conn = create_connection();
         $sql = "DELETE FROM tbaluno WHERE id = :id";
-        $sql = $this->conn->prepare($sql);
+        $sql = $conn->prepare($sql);
 
         $sql->bindParam(":id", $id);
 
