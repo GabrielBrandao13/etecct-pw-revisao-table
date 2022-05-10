@@ -34,7 +34,7 @@ function handleAddAluno(e){
 }
 
 
-function insertStudent(nome, nota1, nota2, nota3){
+function insertStudent(id, nome, nota1, nota2, nota3){
     const TARGET = document.querySelector('table tbody')
     const row = document.createElement('tr')
 
@@ -44,6 +44,7 @@ function insertStudent(nome, nota1, nota2, nota3){
     const td4 = createCell(nota3)
     const td5 = createCell(0)
     const tdDelete = createCell('❌')
+    tdDelete.addEventListener('click', handleRemoveStudentFactory(id))
     
     row.appendChild(td1)
     row.appendChild(td2)
@@ -59,7 +60,7 @@ function insertStudent(nome, nota1, nota2, nota3){
 
 
 function handleRemoveStudentFactory(id){
-    const fn = (e)=> {
+    const fn = ()=> {
         removeStudentFromDb(id)
     }
     return fn
