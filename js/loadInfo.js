@@ -3,6 +3,6 @@ async function loadStudentsInfo(){
     clearTable()
 
     students.map(student => {
-        insertStudent(student.nome, student.nota1, student.nota2, student.nota3)
+        insertStudent(student.id, student.nome, student.nota1, student.nota2, student.nota3)
     })
 }

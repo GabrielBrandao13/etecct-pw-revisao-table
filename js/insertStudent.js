@@ -2,7 +2,6 @@ const form = document.querySelector('form')
 
 form.addEventListener('submit', handleAddAluno)
 
-
 function createCell(val){
     const cell = document.createElement('td')
     cell.textContent = val
@@ -28,7 +27,6 @@ function handleAddAluno(e){
 
     insertStudentOnDb(nome, nota1, nota2, nota3)
 
-
     inputNome.value = ''
     inputNota1.value = ''
     inputNota2.value = ''
@@ -36,7 +34,7 @@ function handleAddAluno(e){
 }
 
 
-function insertStudent(nome, nota1, nota2, nota3){
+function insertStudent(id, nome, nota1, nota2, nota3){
     const TARGET = document.querySelector('table tbody')
     const row = document.createElement('tr')
 
@@ -45,29 +43,54 @@ function insertStudent(nome, nota1, nota2, nota3){
     const td3 = createCell(nota2)
     const td4 = createCell(nota3)
     const td5 = createCell(0)
+    const tdDelete = createCell('❌')
+    tdDelete.addEventListener('click', handleRemoveStudentFactory(id))
     
     row.appendChild(td1)
     row.appendChild(td2)
     row.appendChild(td3)
     row.appendChild(td4)
     row.appendChild(td5)
+    row.appendChild(tdDelete)
 
     TARGET.appendChild(row)
     setAvgOfStudents()
 }
 
+
+
+function handleRemoveStudentFactory(id){
+    const fn = ()=> {
+        removeStudentFromDb(id)
+    }
+    return fn
+}
+
+
 async function insertStudentOnDb(nome, nota1, nota2, nota3){
     const data = new FormData()
-
+    
     data.append('nome', nome)
     data.append('nota1', nota1)
     data.append('nota2', nota2)
     data.append('nota3', nota3)
-
+    
     await fetch('./api/insert_aluno.php', {
         body: data,
         method: 'POST',
         "Content-Type": "multipart/form-data"
+    })
+    update()
+}
+async function removeStudentFromDb(id){
+    const data = new FormData()
+
+    data.append('id', id)
+
+    await fetch('./api/delete_aluno.php', {
+        body:data,
+        method:'POST',
+        'Content-type':"multipart/form-data"
     })
     update()
 }
